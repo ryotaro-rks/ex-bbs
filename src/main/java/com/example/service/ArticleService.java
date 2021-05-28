@@ -1,0 +1,32 @@
+package com.example.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.domain.Article;
+import com.example.repository.ArticleRepository;
+
+/**
+ * 記事用サービスクラス.
+ * 
+ * @author ryotaro.seya
+ *
+ */
+@Service
+@Transactional
+public class ArticleService {
+	@Autowired
+	private ArticleRepository articleService;
+
+	/**
+	 * 全記事情報を表示.
+	 * 
+	 * @return 全記事情報
+	 */
+	public List<Article> showAllArticle() {
+		return articleService.findAll();
+	}
+}
