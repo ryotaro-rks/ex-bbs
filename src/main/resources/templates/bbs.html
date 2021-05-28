@@ -5,6 +5,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+    <form th:action="@{/bbs/post}" method="post">
+        <label for="posterName">投稿者名:</label>
+        <input type="text" name="posterName" id="posterName">
+        <label for="posterContent">投稿内容:</label>
+        <textarea name="posterContent" id="posterContent" cols="30" rows="10"></textarea>
+    </form>
+    <div th:each="article : ${articleList}">
+        <hr>
+        <p>投稿者名: <span th:text="${article.name}"></span></p>
+        <p>投稿内容:</p>
+        <pre><span th:text="${article.content}"></span></pre>
+        <button>記事削除</button>
+        <div th:each="comment : ${article.commentList}">
+            <p>投稿者名: <span th:text="${comment.name}"></span></p>
+            <p>投稿内容:</p>
+            <pre><span th:text="${comment.content}"></span></pre>
+        </div>
+    </div>
 </body>
 </html>
