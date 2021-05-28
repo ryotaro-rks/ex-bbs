@@ -29,4 +29,13 @@ public class ArticleService {
 	public List<Article> showAllArticle() {
 		return articleService.findAll();
 	}
+
+	/**
+	 * 記事投稿.
+	 * 
+	 * @param article 投稿する記事情報.
+	 */
+	public void postArticle(Article article) {
+		articleService.insert(article);
+	}
 }

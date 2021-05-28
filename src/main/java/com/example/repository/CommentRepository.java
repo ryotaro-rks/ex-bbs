@@ -39,4 +39,17 @@ public class CommentRepository {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("articleId", articleId);
 		return template.query(sql, param, COMMENT_ROW_MAPPER);
 	}
+
+	/**
+	 * コメント投稿.
+	 * 
+	 * @param article コメント内容
+	 */
+	public void insert(Comment comment) {
+		String sql = "insert into " + TABLE_NAME + "(name, content, article_id) values (:name, :content, :articleId)";
+		System.out.println(comment.toString());
+		SqlParameterSource param = new MapSqlParameterSource().addValue("name", comment.getName())
+				.addValue("content", comment.getContent()).addValue("articleId", comment.getArticleId());
+		template.update(sql, param);
+	}
 }

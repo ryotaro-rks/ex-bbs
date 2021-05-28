@@ -22,12 +22,21 @@ public class CommentService {
 	private CommentRepository commentRepository;
 
 	/**
-	 * 記事IDに対応するコメント情報一覧を取得
+	 * 記事IDに対応するコメント情報一覧を取得.
 	 * 
 	 * @param articleId 記事ID
 	 * @return 記事IDに対応するコメント情報
 	 */
 	public List<Comment> showAllComment(Integer articleId) {
 		return commentRepository.findByArticleId(articleId);
+	}
+
+	/**
+	 * コメント投稿.
+	 * 
+	 * @param comment コメント内容
+	 */
+	public void insert(Comment comment) {
+		commentRepository.insert(comment);
 	}
 }

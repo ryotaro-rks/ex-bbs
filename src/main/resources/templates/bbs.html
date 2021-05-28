@@ -7,21 +7,31 @@
 <body>
     <form th:action="@{/bbs/post}" method="post">
         <label for="posterName">投稿者名:</label>
-        <input type="text" name="posterName" id="posterName">
+        <input type="text" name="name" id="posterName">
+        <br>
         <label for="posterContent">投稿内容:</label>
-        <textarea name="posterContent" id="posterContent" cols="30" rows="10"></textarea>
+        <textarea name="content" id="posterContent" cols="30" rows="10"></textarea>
+        <button>記事投稿</button>
     </form>
     <div th:each="article : ${articleList}">
         <hr>
         <p>投稿者名: <span th:text="${article.name}"></span></p>
         <p>投稿内容:</p>
         <pre><span th:text="${article.content}"></span></pre>
-        <button>記事削除</button>
+        <button>記事削除</button><br>
         <div th:each="comment : ${article.commentList}">
             <p>投稿者名: <span th:text="${comment.name}"></span></p>
             <p>投稿内容:</p>
             <pre><span th:text="${comment.content}"></span></pre>
         </div>
+        <form th:action="@{/bbs/comment}" method="post">
+            <label for="commentName">名前:</label><br>
+            <input type="text" name="name" id="commentName"><br>
+            <label for="commentContent">コメント:</label><br>
+            <textarea name="content" id="commentContent" cols="30" rows="10"></textarea>
+            <input type="hidden" name="articleId" th:id="${article.id}" th:value="${article.id}">
+            <button>コメント投稿</button>
+        </form>
     </div>
 </body>
 </html>
