@@ -43,8 +43,6 @@ public class ArticleController {
 			article.setCommentList(commentService.showAllComment(article.getId()));
 		}
 
-		articleList.forEach(System.out::println);
-
 		model.addAttribute("articleList", articleList);
 
 		return "bbs";
@@ -75,6 +73,20 @@ public class ArticleController {
 		Comment comment = new Comment();
 		BeanUtils.copyProperties(commentForm, comment);
 		commentService.insert(comment);
+		return "redirect:/bbs";
+	}
+
+	/**
+	 * 指定したIDの記事の削除
+	 * 
+	 * @param articleId 削除する記事ID
+	 * @return 掲示板ページ
+	 */
+	@RequestMapping("deleteArticle")
+	public String deleteArticle(Integer articleId) {
+		System.out.println(articleId);
+		commentService.deleteCommentByArticleId(articleId);
+		articleService.deleteArticleByid(articleId);
 		return "redirect:/bbs";
 	}
 }

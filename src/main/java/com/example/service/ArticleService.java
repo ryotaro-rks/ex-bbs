@@ -38,4 +38,13 @@ public class ArticleService {
 	public void postArticle(Article article) {
 		articleService.insert(article);
 	}
+
+	/**
+	 * 指定したID番号の記事を削除.
+	 * 
+	 * @param id 削除対象ID
+	 */
+	public void deleteArticleByid(int id) {
+		articleService.deleteById(id);
+	}
 }

@@ -52,4 +52,15 @@ public class CommentRepository {
 				.addValue("content", comment.getContent()).addValue("articleId", comment.getArticleId());
 		template.update(sql, param);
 	}
+
+	/**
+	 * IDで指定した記事を削除
+	 * 
+	 * @param id 削除対象id
+	 */
+	public void deleteByArticleId(int articleId) {
+		String sql = "delete from " + TABLE_NAME + " where article_id = " + articleId;
+		SqlParameterSource param = new MapSqlParameterSource();
+		template.update(sql, param);
+	}
 }

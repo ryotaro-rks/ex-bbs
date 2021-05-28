@@ -39,4 +39,13 @@ public class CommentService {
 	public void insert(Comment comment) {
 		commentRepository.insert(comment);
 	}
+
+	/**
+	 * 指定した記事IDに付与されているコメントを削除
+	 * 
+	 * @param articleId 記事ID
+	 */
+	public void deleteCommentByArticleId(int articleId) {
+		commentRepository.deleteByArticleId(articleId);
+	}
 }
