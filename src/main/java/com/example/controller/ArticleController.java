@@ -37,11 +37,13 @@ public class ArticleController {
 	 */
 	@RequestMapping("")
 	public String index(Model model) {
-		List<Article> articleList = articleService.showAllArticle();
+//		List<Article> articleList = articleService.showAllArticle();
+//
+//		for (Article article : articleList) {
+//			article.setCommentList(commentService.showAllComment(article.getId()));
+//		}
 
-		for (Article article : articleList) {
-			article.setCommentList(commentService.showAllComment(article.getId()));
-		}
+		List<Article> articleList = articleService.showAllArticleAndComment();
 
 		model.addAttribute("articleList", articleList);
 

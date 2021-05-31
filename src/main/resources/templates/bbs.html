@@ -23,8 +23,8 @@
             <button>記事削除</button><br>
         </form>
         <div th:each="comment : ${article.commentList}">
-            <p>投稿者名: <span th:text="${comment.name}"></span></p>
-            <p>投稿内容:</p>
+            <p>コメント者名: <span th:text="${comment.name}"></span></p>
+            <p>コメント内容:</p>
             <pre><span th:text="${comment.content}"></span></pre>
         </div>
         <form th:action="@{/bbs/comment}" method="post">

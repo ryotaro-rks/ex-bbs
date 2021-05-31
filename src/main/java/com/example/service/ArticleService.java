@@ -31,6 +31,15 @@ public class ArticleService {
 	}
 
 	/**
+	 * 全記事情報とコメント情報を取得.
+	 * 
+	 * @return 全記事情報とコメント情報
+	 */
+	public List<Article> showAllArticleAndComment() {
+		return articleService.findAllArticleAndComment();
+	}
+
+	/**
 	 * 記事投稿.
 	 * 
 	 * @param article 投稿する記事情報.
