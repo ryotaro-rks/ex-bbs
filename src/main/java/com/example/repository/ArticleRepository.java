@@ -39,44 +39,29 @@ public class ArticleRepository {
 	// TODO: 演習6 で使うクラス
 	private final static ResultSetExtractor<List<Article>> ARTICLE_SET_EXTRACTOR = (rs) -> {
 		List<Article> articleList = new ArrayList<>();
-		List<Comment> commentList = new ArrayList<>();
+		List<Comment> commentList = null;
 		int beforeArticleId = 0;
 		Article article = null;
 
 		while (rs.next()) {
 			// 新しい記事
 			if (rs.getInt("a_id") != beforeArticleId) {
-				if (beforeArticleId != 0) {
-					article.setCommentList(commentList);
-					articleList.add(article);
-				}
-
 				// 記事情報セット
 				article = new Article();
 				article.setId(rs.getInt("a_id"));
 				article.setName(rs.getString("a_name"));
 				article.setContent(rs.getString("a_content"));
 
-				// コメントは初期化
-				/*
-				 * WARNING: if (rs.getInt("c_id") != 0) の中で初期化すると、 もし現在の記事にコメントがなかった場合、
-				 * ひとつ前の記事のコメントが現在の記事に反映されてしまう.
-				 */
 				commentList = new ArrayList<>();
-				// コメントが存在した場合
-				if (rs.getInt("c_id") != 0) {
-					commentList.add(getCommentFromResultSet(rs));
-				}
+				article.setCommentList(commentList);
+				articleList.add(article);
 			}
-			// 一行前と同じ記事, コメント追加
-			else {
+			// コメント追加
+			if (rs.getInt("c_id") != 0) {
 				commentList.add(getCommentFromResultSet(rs));
 			}
 			beforeArticleId = rs.getInt("a_id");
 		}
-		article.setCommentList(commentList);
-		System.out.println(article);
-		articleList.add(article);
 
 		return articleList;
 	};
