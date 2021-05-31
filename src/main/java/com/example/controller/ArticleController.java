@@ -115,4 +115,11 @@ public class ArticleController {
 		articleService.deleteArticleByid(articleId);
 		return "redirect:/bbs";
 	}
+
+	@RequestMapping("deleteAll")
+	public String deleteAll() {
+		commentService.deleteAll();
+		articleService.deleteAll();
+		return "redirect:/bbs";
+	}
 }

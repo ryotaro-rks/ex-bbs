@@ -56,4 +56,11 @@ public class ArticleService {
 	public void deleteArticleByid(int id) {
 		articleService.deleteById(id);
 	}
+
+	/**
+	 * 全ての記事を削除.
+	 */
+	public void deleteAll() {
+		articleService.deleteAll();
+	}
 }

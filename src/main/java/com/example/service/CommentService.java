@@ -41,11 +41,18 @@ public class CommentService {
 	}
 
 	/**
-	 * 指定した記事IDに付与されているコメントを削除
+	 * 指定した記事IDに付与されているコメントを削除.
 	 * 
 	 * @param articleId 記事ID
 	 */
 	public void deleteCommentByArticleId(int articleId) {
 		commentRepository.deleteByArticleId(articleId);
+	}
+
+	/**
+	 * 全てのコメントを削除.
+	 */
+	public void deleteAll() {
+		commentRepository.deleteAll();
 	}
 }

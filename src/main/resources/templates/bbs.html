@@ -47,6 +47,11 @@
             <input type="hidden" name="articleId" th:id="${article.id}" th:value="${article.id}">
             <button>コメント投稿</button>
         </form>
+        
+        <hr>
+        <form th:action="@{/bbs/deleteAll}" method="post">
+        	<button>全て削除</button>
+        </form>
     </div>
     
 </body>

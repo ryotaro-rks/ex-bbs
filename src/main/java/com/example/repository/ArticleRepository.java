@@ -112,4 +112,13 @@ public class ArticleRepository {
 		SqlParameterSource param = new MapSqlParameterSource();
 		template.update(sql, param);
 	}
+
+	/**
+	 * 全ての記事を削除.
+	 */
+	public void deleteAll() {
+		String sql = "delete from " + ARTICLE_TABLE_NAME;
+		SqlParameterSource param = new MapSqlParameterSource();
+		template.update(sql, param);
+	}
 }
