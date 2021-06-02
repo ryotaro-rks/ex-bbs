@@ -113,12 +113,16 @@ public class ArticleRepository {
 		template.update(sql, param);
 	}
 
-	/**
-	 * 全ての記事を削除.
-	 */
-	public void deleteAll() {
-		String sql = "delete from " + ARTICLE_TABLE_NAME;
-		SqlParameterSource param = new MapSqlParameterSource();
-		template.update(sql, param);
-	}
+	// PostgreSqlでは結合して削除というやり方はできない
+//	/**
+//	 * 指定したIDの記事とコメントを削除.
+//	 * 
+//	 * @param id 記事ID
+//	 */
+//	public void deleteArticleAndCommentById(int id) {
+//		String sql = "delete from " + ARTICLE_TABLE_NAME + " as a left outer join " + COMMENT_TABLE_NAME
+//				+ " as c on a.id = c.article_id where a.id = " + id;
+//		SqlParameterSource param = new MapSqlParameterSource();
+//		template.update(sql, param);
+//	}
 }

@@ -49,10 +49,4 @@ public class CommentService {
 		commentRepository.deleteByArticleId(articleId);
 	}
 
-	/**
-	 * 全てのコメントを削除.
-	 */
-	public void deleteAll() {
-		commentRepository.deleteAll();
-	}
 }

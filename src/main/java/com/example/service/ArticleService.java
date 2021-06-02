@@ -53,14 +53,17 @@ public class ArticleService {
 	 * 
 	 * @param id 削除対象ID
 	 */
-	public void deleteArticleByid(int id) {
+	public void deleteArticleById(int id) {
 		articleService.deleteById(id);
 	}
 
 	/**
-	 * 全ての記事を削除.
+	 * 指定したIDの記事とコメントを削除.
+	 * 
+	 * @param id 記事ID
 	 */
-	public void deleteAll() {
-		articleService.deleteAll();
-	}
+//	public void deleteArticleAndCommentById(int id) {
+//		articleService.deleteArticleAndCommentById(id);
+//	}
+
 }

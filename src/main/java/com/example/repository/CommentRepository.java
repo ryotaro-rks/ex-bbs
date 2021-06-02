@@ -63,14 +63,4 @@ public class CommentRepository {
 		SqlParameterSource param = new MapSqlParameterSource();
 		template.update(sql, param);
 	}
-
-	/**
-	 * 全てのコメントを削除.
-	 */
-	public void deleteAll() {
-		// TODO: truncate を使うと高速化される？
-		String sql = "delete from " + TABLE_NAME;
-		SqlParameterSource param = new MapSqlParameterSource();
-		template.update(sql, param);
-	}
 }

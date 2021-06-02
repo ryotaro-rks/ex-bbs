@@ -1,0 +1,9 @@
+CREATE TABLE comments
+(
+  id serial NOT NULL, -- コメントID
+  name text NOT NULL, -- 名前
+  content text NOT NULL, -- コメント
+  article_id integer NOT NULL, -- article_id
+  CONSTRAINT comments_pkey PRIMARY KEY (id),
+  FOREIGN KEY (article_id) REFERENCES articles (id) on delete cascade -- 更新・削除時に外部キーも同時に更新・削除
+);
